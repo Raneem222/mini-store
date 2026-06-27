@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "المتجر";
+    var categories = ViewBag.CategoriesList;
+    string[] colors = { "#0d6efd", "#dc3545", "#198754" };
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-5">تصنيفات المتجر</h2>
+
+    <div class="row g-4">
+        @for (int i = 0; i < categories.Length; i++)
+        {
+            var category = categories[i];
+            string activeColor = colors[i % colors.Length];
+
+            <div class="col-md-4">
+                <div class="card text-center h-100 shadow-sm">
+                    <div class="card-body">
+                       <div class="mb-3">
+    <span style="display:inline-flex; align-items:center; justify-content:center;
+                 width:90px; height:90px; border-radius:50%;
+                 background-color:@(activeColor)1a;">
+        <i class="@category.Icon" style="font-size: 2.5rem; color: @activeColor;"></i>
+    </span>
+</div>
+                        <h4 class="fw-bold mb-4">@category.Name</h4>
+                        <a asp-action="Products" asp-route-id="@category.Id"
+                           class="btn text-white" style="background-color: @activeColor;">
+                            عرض المنتجات
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
