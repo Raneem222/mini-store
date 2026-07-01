@@ -1,0 +1,53 @@
+@model mini_store.Models.Product
+
+@{
+    ViewData["Title"] = "تعديل منتج";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h3 class="text-center mb-4">تعديل المنتج</h3>
+
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+
+                    <div class="mb-3">
+                        <label class="form-label">اسم المنتج</label>
+                        <input name="Name" class="form-control" value="@Model.Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">السعر</label>
+                        <input name="Price" type="number" class="form-control" value="@Model.Price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">الوصف</label>
+                        <input name="Description" class="form-control" value="@Model.Description">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">اسم الصورة</label>
+                        <input name="Image" class="form-control" value="@Model.Image">
+                    </div>
+                    <div class="mb-3">
+    <label class="form-label">الفئة</label>
+    <select name="CategoryId" class="form-select">
+        @foreach (var cat in ViewBag.Categories)
+        {
+            if (cat.Id == Model.CategoryId)
+            {
+                <option value="@cat.Id" selected>@cat.Name</option>
+            }
+            else
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+        }
+    </select>
+</div>
+                    <button type="submit" class="btn btn-warning w-100">حفظ التعديلات</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

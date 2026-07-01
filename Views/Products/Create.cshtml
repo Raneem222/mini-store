@@ -1,0 +1,46 @@
+@model mini_store.Models.Product
+
+@{
+    ViewData["Title"] = "إضافة منتج";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h3 class="text-center mb-4">إضافة منتج جديد</h3>
+
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">اسم المنتج</label>
+                        <input name="Name" class="form-control" asp-for="Name">
+<span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">السعر</label>
+                        <input name="Price" type="number" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">الوصف</label>
+                        <input name="Description" class="form-control">
+                    </div>
+                 <div class="mb-3">
+    <label class="form-label">صورة المنتج</label>
+    <input asp-for="ImageFile" type="file" class="form-control" accept="image/*">
+</div>
+                   <div class="mb-3">
+    <label class="form-label">الفئة</label>
+    <select name="CategoryId" class="form-select">
+        <option value="">اختر الفئة</option>
+        @foreach (var cat in ViewBag.Categories)
+        {
+            <option value="@cat.Id">@cat.Name</option>
+        }
+    </select>
+</div>
+                    <button type="submit" class="btn btn-success w-100">حفظ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

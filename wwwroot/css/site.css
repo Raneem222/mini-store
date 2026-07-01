@@ -59,3 +59,22 @@ h2 {
     background-color: #ffffff !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+
+/* الصور داخل الكروت بخلفية ناعمة */
+.card-img-top {
+    background-color: #fafbfc;
+    border-radius: 16px 16px 0 0;
+}
+
+/* السعر يبان أوضح */
+.text-success {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* مسافة أنعم تحت العنوان الرئيسي */
+.container h2 {
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e3e8ef;
+    display: inline-block;
+}

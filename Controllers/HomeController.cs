@@ -72,4 +72,17 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+public IActionResult SetLanguage(string culture, string returnUrl)
+{
+    Response.Cookies.Append(
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName,
+        Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue(
+            new Microsoft.AspNetCore.Localization.RequestCulture(culture)),
+        new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+    );
+
+    return LocalRedirect(returnUrl);
+}
+
 }
